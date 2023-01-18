@@ -11,7 +11,7 @@ URL = 'https://chuan.us/'
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
-                    filename='chuan.log',
+                    filename='../chuan.log',
                     filemode='w')
 
 
@@ -33,19 +33,19 @@ def diff(func):
         count_now = len(list(items))
         now_date = datetime.now().strftime("%Y-%m-%d")
 
-        if not os.path.exists('last_count.txt'):
-            with open('last_count.txt', 'w', encoding='UTF-8') as f:
+        if not os.path.exists('../last_count.txt'):
+            with open('../last_count.txt', 'w', encoding='UTF-8') as f:
 
                 f.write(f'{now_date}: {count_now}')
                 return items
 
-        with open('last_count.txt', 'r', encoding='UTF-8') as f:
+        with open('../last_count.txt', 'r', encoding='UTF-8') as f:
             lines = f.readlines()
             last_line = lines[-1]
             count_last = int(re.search(r": (\d*)", last_line).group(1))
 
         if count_now != count_last:
-            with open('last_count.txt', 'a', encoding='UTF-8') as f:
+            with open('../last_count.txt', 'a', encoding='UTF-8') as f:
                 f.write(f'\n{now_date}: {count_now}')
 
             diff_count = count_now - count_last
