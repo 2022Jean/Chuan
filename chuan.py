@@ -1,3 +1,4 @@
+import os.path
 import time
 from datetime import datetime
 from random import random
@@ -23,6 +24,39 @@ def log_it(func):
         else:
             logging.info(f"Fail to process {args}")
         return result
+    return wrapper
+
+
+def diff(func):
+    def wrapper(*args, **kwargs):
+        items = func(*args, **kwargs)
+        count_now = len(list(items))
+        now_date = datetime.now().strftime("%Y-%m-%d")
+
+        if not os.path.exists('last_count.txt'):
+            with open('last_count.txt', 'w', encoding='UTF-8') as f:
+
+                f.write(f'{now_date}: {count_now}')
+                return items
+
+        with open('last_count.txt', 'r', encoding='UTF-8') as f:
+            lines = f.readlines()
+            last_line = lines[-1]
+            count_last = re.search(r":(\d*)", last_line).group(1)
+
+        if count_now != count_last:
+            with open('last_count.txt', 'a', encoding='UTF-8') as f:
+                f.write(f'{now_date}: {count_now}')
+
+            diff_count = int(count_now - count_last)
+            new_list = sorted(items, key=lambda x: x['date'], reverse=True)
+            new_items = new_list[0:diff_count]
+            return new_items
+
+        else:
+            import sys
+            sys.exit()
+
     return wrapper
 
 
@@ -63,6 +97,7 @@ def content(html_text):
 
 
 @log_it
+# @diff
 def link(html_text):
     try:
         matches = re.finditer(r"(https://chuan\.us/archives/\d*).*?(\d{1,2}/\d{1,2}/\d{4})", html_text, re.MULTILINE)
