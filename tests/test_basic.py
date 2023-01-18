@@ -19,14 +19,17 @@ class BasicTestSuite(unittest.TestCase):
         item = {'link': 'https://chuan.us/archives/690', 'date': '2021-10-26'}
         self.assertIn(item, items)
         self.assertTrue(len(items) >= 187)
+        self.front_page.close()
 
     def test_content(self):
         detail = chuan.content(self.detail_page.read())
         assert detail['title'] and detail['content'] is not None
+        self.detail_page.close()
 
     def test_save_md(self):
         message = chuan.save_md('tests/text/md_text.md', self.md_text.read())
         self.assertEqual(message, 'Successfully save file tests/text/md_text.md')
+        self.md_text.close()
 
 
 if __name__ == '__main__':
