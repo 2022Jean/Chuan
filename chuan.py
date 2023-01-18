@@ -29,7 +29,7 @@ def log_it(func):
 
 def diff(func):
     def wrapper(*args, **kwargs):
-        items = func(*args, **kwargs)
+        items = list(func(*args, **kwargs))
         count_now = len(list(items))
         now_date = datetime.now().strftime("%Y-%m-%d")
 
@@ -42,20 +42,23 @@ def diff(func):
         with open('last_count.txt', 'r', encoding='UTF-8') as f:
             lines = f.readlines()
             last_line = lines[-1]
-            count_last = re.search(r":(\d*)", last_line).group(1)
+            count_last = int(re.search(r": (\d*)", last_line).group(1))
 
         if count_now != count_last:
             with open('last_count.txt', 'a', encoding='UTF-8') as f:
-                f.write(f'{now_date}: {count_now}')
+                f.write(f'\n{now_date}: {count_now}')
 
-            diff_count = int(count_now - count_last)
-            new_list = sorted(items, key=lambda x: x['date'], reverse=True)
+            diff_count = count_now - count_last
+            new_list = sorted(list(items), key=lambda x: x['date'], reverse=True)
             new_items = new_list[0:diff_count]
             return new_items
 
         else:
-            import sys
-            sys.exit()
+            try:
+                import sys
+                sys.exit()
+            except SystemExit:
+                logging.info('No change')
 
     return wrapper
 
@@ -97,7 +100,7 @@ def content(html_text):
 
 
 @log_it
-# @diff
+@diff
 def link(html_text):
     try:
         matches = re.finditer(r"(https://chuan\.us/archives/\d*).*?(\d{1,2}/\d{1,2}/\d{4})", html_text, re.MULTILINE)
@@ -127,18 +130,21 @@ def save_md(file_name, string):
 
 
 def main():
-    front_page = scrape(URL)
-    items = link(front_page)
-    for item in items:
-        url = item['link']
-        detail = content(scrape(url).text)
-        detail['title'] = re.sub(r"王川: ", item['date']+'_', detail['title'])
+    try:
+        front_page = scrape(URL).text
+        items = link(front_page)
+        for item in items:
+            url = item['link']
+            detail = content(scrape(url).text)
+            detail['title'] = re.sub(r"王川: ", item['date']+'_', detail['title'])
+            save_md(file_name='sample/' + detail['title'] + '.md', string=detail['content'])
 
-    # todo: 避免重复提取， 要检测是否已经提取过。
+    except Exception:
+        pass
 
 
 if __name__ == '__main__':
-    pass
+    main()
 
 
 
