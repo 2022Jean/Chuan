@@ -15,10 +15,11 @@ class BasicTestSuite(unittest.TestCase):
         assert str(response) == '<Response [200]>'
 
     def test_link(self):
-        items = list(chuan.link(self.front_page.read()))
+        # todo: test link function
+        items = chuan.link(self.front_page.read())
         item = {'link': 'https://chuan.us/archives/690', 'date': '2021-10-26'}
         self.assertIn(item, items)
-        self.assertTrue(len(items) >= 187)
+        self.assertTrue(len(items) == 187)
         self.front_page.close()
 
     def test_content(self):
