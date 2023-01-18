@@ -74,7 +74,6 @@ def scrape(url):
         return e
 
 
-
 @log_it
 def convert_date(date_string) -> str:
     date_object = datetime.strptime(date_string, '%m/%d/%Y')
