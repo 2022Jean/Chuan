@@ -87,7 +87,6 @@ def save_file(file_name: str, data: str) -> None:
         print(f"Successfully saved to {file_name}")
 
 
-
 def main():
     pass
 
