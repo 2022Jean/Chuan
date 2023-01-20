@@ -4,19 +4,7 @@ from typing import List, Dict
 
 import requests
 
-from chuan.utils import convert_date
-
-HEADERS = {
-    'authority': 'chuan.us',
-    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,applica'
-              'tion/signed-exchange;v=b3;q=0.9',
-    'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
-    'cache-control': 'max-age=0',
-    'cookie': '_ga_3YPF1ZPFYX=GS1.1.1674193876.1.0.1674193876.0.0.0; _ga=GA1.1.781886078.1674193876; _tccl_visitor=84fb'
-              'f8d2-66ed-575f-9bdd-69fa95e6ff92; _tccl_visit=84fbf8d2-66ed-575f-9bdd-69fa95e6ff92',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Sa'
-                  'fari/537.36',
-}
+from chuan.utils import convert_date, HEADERS
 
 URL = 'https://chuan.us'
 
