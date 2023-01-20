@@ -9,7 +9,8 @@ logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
                     filename='chuan.log',
-                    filemode='w')
+                    filemode='w',
+                    encoding='UTF-8')
 
 
 def log_it(func):
@@ -21,12 +22,14 @@ def log_it(func):
 
         result = func(*args, **kwargs)
 
-        if result is None:
+        if func.__name__ != 'save_file' and result is None:
             logging.info(f'Return NOTHING from function {func.__name__}, end the program!!')
             exit()
-        if func.__name__ == 'clean_items' or 'get_links' or 'wrapper':
+        if func.__name__ == 'get_links':
             items_quantity = len(result)
-            logging.info(f'Successfully get {items_quantity} links from function {func.__name__}')
+            logging.info(f'Successfully get {items_quantity} links from function get_links')
+
+        logging.info(f'The result function {func.__name__} return: {result}')
 
         return result
 
