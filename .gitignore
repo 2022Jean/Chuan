@@ -90,6 +90,5 @@ ENV/
 .ropeproject
 
 # others
-main.py
 chuan.log
 example_files
