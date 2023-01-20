@@ -1,4 +1,3 @@
-import logging
 import re
 from typing import List, Dict
 
@@ -7,12 +6,6 @@ import requests
 from chuan.utils import convert_date, HEADERS
 
 URL = 'https://chuan.us'
-
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S',
-                    filename='../chuan.log',
-                    filemode='w')
 
 
 def get_webpage(url: str) -> requests.Response:
