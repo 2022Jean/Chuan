@@ -88,3 +88,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# others
+main.py
+chuan.log
+example_files
