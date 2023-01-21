@@ -93,7 +93,7 @@ def clean_items(func):
         if os.path.exists('log/download_history.txt'):
             with open('log/download_history.txt', 'r') as f:
                 lines: list[str] = f.readlines()
-                last_line: str = lines[-1]
+                last_line: str = lines[-1].rstrip()
                 try:
                     date = re.findall(r"\d{4}-\d{1,2}-\d{1,2}", last_line, re.MULTILINE)
                     log_print(f"Last download articles is in {date[0]} which wrote in {date[1]}")
