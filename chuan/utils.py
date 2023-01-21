@@ -13,6 +13,24 @@ logging.basicConfig(level=logging.INFO,
                     encoding='UTF-8')
 
 
+def truncate_strings(items: (list, dict, str), max_length: int) -> (list, dict, str):
+    if isinstance(items, str):
+        if len(items) > max_length:
+            displayed_characters: str = items[:max_length]
+            number_of_characters_not_displayed: int = len(items[max_length:])
+            log_message = f"{displayed_characters}...{number_of_characters_not_displayed}" \
+                          f" more characters not displayed..."
+            return log_message
+        else:
+            return items
+    elif isinstance(items, list):
+        return [truncate_strings(x, max_length) for x in items]
+    elif isinstance(items, dict):
+        return {k: truncate_strings(v, max_length) for k, v in items.items()}
+    else:
+        return items
+
+
 def log_it(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -25,11 +43,14 @@ def log_it(func):
         if func.__name__ != 'save_file' and result is None:
             logging.info(f'Return NOTHING from function {func.__name__}, end the program!!')
             exit()
-        if func.__name__ == 'get_links':
-            items_quantity = len(result)
-            logging.info(f'Successfully get {items_quantity} links from function get_links')
 
-        logging.info(f'The result function {func.__name__} return: {result}')
+        example_items = truncate_strings(result, 50)
+        if isinstance(example_items, list):
+            items_quantity: int = len(result)
+            logging.info(f"Function {func.__name__} return a list consisting of {items_quantity} items, "
+                         f"for example: {example_items}")
+        else:
+            logging.info(f'The example result function {func.__name__} returned: {example_items}')
 
         return result
 
