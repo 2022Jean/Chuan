@@ -93,3 +93,4 @@ ENV/
 chuan.log
 example_files
 example.py
+.idea
