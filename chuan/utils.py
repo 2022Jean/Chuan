@@ -13,6 +13,11 @@ logging.basicConfig(level=logging.INFO,
                     encoding='UTF-8')
 
 
+def log_print(message: str, *args, **kwargs) -> None:
+    logging.info(message, *args, **kwargs)
+    print(message, *args, **kwargs)
+
+
 def truncate_strings(items: (list, dict, str), max_length: int) -> (list, dict, str):
     if isinstance(items, str):
         if len(items) > max_length:
@@ -46,9 +51,13 @@ def log_it(func):
 
         example_items = truncate_strings(result, 50)
         if isinstance(example_items, list):
-            items_quantity: int = len(result)
-            logging.info(f"Function {func.__name__} return a list consisting of {items_quantity} items, "
-                         f"for example: {example_items}")
+            result_quantity: int = len(result)
+            if result_quantity > 3:
+                logging.info(f"Function {func.__name__} return a list consisting of {result_quantity} items, "
+                             f"for example: {example_items[0:3]}")
+            else:
+                logging.info(f"Function {func.__name__} return a list consisting of {result_quantity} items, "
+                             f"for example: {example_items}")
         else:
             logging.info(f'The example result function {func.__name__} returned: {example_items}')
 
@@ -67,8 +76,10 @@ def write_download_message(mode: str, items: list[dict[str, str]]) -> None:
         download_message_items.append(message_items)
     message_items_timeline = sorted(download_message_items, key=lambda x: x['date'])
 
-    with open('Chuan/download_history.txt', mode, encoding='UTF-8') as f:
-        f.writelines([message_item['message'] for message_item in message_items_timeline])
+    with open('download_history.txt', mode, encoding='UTF-8') as f:
+        if mode == 'w':
+            f.write('Below is download history: ')
+        f.writelines(['\n' + message_item['message'] for message_item in message_items_timeline])
 
 
 def clean_items(func):
@@ -81,11 +92,18 @@ def clean_items(func):
             with open('download_history.txt', 'r') as f:
                 lines: list[str] = f.readlines()
                 last_line: str = lines[-1]
-                date = re.search(r"(\d{4}-\d{1,2}-\d{1,2})", last_line, re.MULTILINE)
-                if date.group(1) is not None:
-                    items_quantity_old: int = len(lines)
+                try:
+                    date = re.findall(r"\d{4}-\d{1,2}-\d{1,2}", last_line, re.MULTILINE)
+                    log_print(f"Last download articles is in {date[0]} which wrote in {date[1]}")
+                except AttributeError as attr_error:
+                    log_print('AttributeError:', attr_error)
+                except re.error as re_error:
+                    log_print('RE error:', re_error)
+                else:
+                    items_quantity_old: int = len(lines) - 1
                     difference: int = items_quantity - items_quantity_old
                     if difference <= 0:
+                        log_print('No change, end the program.')
                         exit()
                     items_timeline: list[dict[str, str]] = sorted(items, key=lambda x: x['date'], reverse=True)
                     new_items: list[dict[str, str]] = items_timeline[0:difference]

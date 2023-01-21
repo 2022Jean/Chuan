@@ -1,8 +1,6 @@
-import requests
-
-from chuan import core
-
 import unittest
+
+import requests
 
 
 class CoreTestCase(unittest.TestCase):
