@@ -8,7 +8,7 @@ URL = 'https://chuan.us/'
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
-                    filename='../chuan.log',
+                    filename='log/chuan.log',
                     filemode='w',
                     encoding='UTF-8')
 
@@ -76,7 +76,7 @@ def write_download_message(mode: str, items: list[dict[str, str]]) -> None:
         download_message_items.append(message_items)
     message_items_timeline = sorted(download_message_items, key=lambda x: x['date'])
 
-    with open('../download_history.txt', mode, encoding='UTF-8') as f:
+    with open('log/download_history.txt', mode, encoding='UTF-8') as f:
         if mode == 'w':
             f.write('Below is download history: ')
         f.writelines(['\n' + message_item['message'] for message_item in message_items_timeline])
@@ -88,8 +88,8 @@ def clean_items(func):
         items: list[dict[str, str]] = func(*args, **kwargs)
         items_quantity = len(items)
 
-        if os.path.exists('../download_history.txt'):
-            with open('../download_history.txt', 'r') as f:
+        if os.path.exists('log/download_history.txt'):
+            with open('log/download_history.txt', 'r') as f:
                 lines: list[str] = f.readlines()
                 last_line: str = lines[-1]
                 try:
