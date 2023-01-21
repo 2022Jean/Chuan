@@ -8,7 +8,7 @@ URL = 'https://chuan.us/'
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
-                    filename='chuan.log',
+                    filename='../chuan.log',
                     filemode='w',
                     encoding='UTF-8')
 
