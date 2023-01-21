@@ -119,7 +119,7 @@ def clean_items(func):
     return wrapper
 
 
-def convert_date(date_string) -> str:
+def convert_date(date_string: str) -> str:
     date_object = datetime.strptime(date_string, '%m/%d/%Y')
     formatted_date = date_object.strftime('%Y-%m-%d')
 
