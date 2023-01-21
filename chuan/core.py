@@ -70,6 +70,7 @@ def get_article(html_text: str) -> Dict[str, str]:
         return article
 
 
+@log_it
 def save_file(file_name: str, data: str) -> None:
     try:
         with open(file_name, 'w', encoding='UTF-8') as f:
