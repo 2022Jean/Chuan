@@ -1,0 +1,56 @@
+2023-01-21 14:36:32 Running function: main
+2023-01-21 14:36:32 Running function: get_webpage
+2023-01-21 14:36:32 Start scrape url: https://chuan.us
+2023-01-21 14:36:33 The example result function get_webpage returned: <Response [200]>
+2023-01-21 14:36:33 Running function: get_links
+2023-01-21 14:36:33 Last download articles is in 2023-01-21 which wrote in 2022-02-11
+2023-01-21 14:36:33 Function get_links return a list consisting of 6 items, for example: [{'link': 'https://chuan.us/archives/877', 'date': '2022-12-12'}, {'link': 'https://chuan.us/archives/868', 'date': '2022-09-14'}, {'link': 'https://chuan.us/archives/839', 'date': '2022-06-14'}]
+2023-01-21 14:36:33 Running function: get_webpage
+2023-01-21 14:36:33 Start scrape url: https://chuan.us/archives/877
+2023-01-21 14:36:33 The example result function get_webpage returned: <Response [200]>
+2023-01-21 14:36:33 Running function: get_article
+2023-01-21 14:36:33 The example result function get_article returned: {'title': '2022年岁末看美联储加息和通货膨胀', 'content': '## 2022年岁末看美联储加息和通货膨胀\n1/ 2022 年对大部分投资者是艰难的一年。美联储从三...3144 more characters not displayed...'}
+2023-01-21 14:36:33 Running function: save_file
+2023-01-21 14:36:33 Successfully saved to ../example/2022-12-12_2022年岁末看美联储加息和通货膨胀.md
+2023-01-21 14:36:33 The example result function save_file returned: None
+2023-01-21 14:36:33 Running function: get_webpage
+2023-01-21 14:36:33 Start scrape url: https://chuan.us/archives/868
+2023-01-21 14:36:34 The example result function get_webpage returned: <Response [200]>
+2023-01-21 14:36:34 Running function: get_article
+2023-01-21 14:36:34 The example result function get_article returned: {'title': '从权力和垄断的演化机制看投资(一)', 'content': '## 从权力和垄断的演化机制看投资(一)\n本文集合了笔者过去几个月在推特上关于权力和垄断演化的碎片化...4058 more characters not displayed...'}
+2023-01-21 14:36:34 Running function: save_file
+2023-01-21 14:36:34 Successfully saved to ../example/2022-09-14_从权力和垄断的演化机制看投资(一).md
+2023-01-21 14:36:34 The example result function save_file returned: None
+2023-01-21 14:36:34 Running function: get_webpage
+2023-01-21 14:36:34 Start scrape url: https://chuan.us/archives/839
+2023-01-21 14:36:35 The example result function get_webpage returned: <Response [200]>
+2023-01-21 14:36:35 Running function: get_article
+2023-01-21 14:36:35 The example result function get_article returned: {'title': '论熊市投资者的自我修养', 'content': '## 论熊市投资者的自我修养\n美国股市的标准普尔500指数，2022年六月十四号收盘在 3735点，...7606 more characters not displayed...'}
+2023-01-21 14:36:35 Running function: save_file
+2023-01-21 14:36:35 Successfully saved to ../example/2022-06-14_论熊市投资者的自我修养.md
+2023-01-21 14:36:35 The example result function save_file returned: None
+2023-01-21 14:36:35 Running function: get_webpage
+2023-01-21 14:36:35 Start scrape url: https://chuan.us/archives/800
+2023-01-21 14:36:35 The example result function get_webpage returned: <Response [200]>
+2023-01-21 14:36:35 Running function: get_article
+2023-01-21 14:36:35 The example result function get_article returned: {'title': '论兴趣和世界第九大奇迹(一)', 'content': '## 论兴趣和世界第九大奇迹(一)\n1/ 兴趣让人废寝忘食，是可以持续的巨大内在动力。\n\n2/ 兴趣...2623 more characters not displayed...'}
+2023-01-21 14:36:35 Running function: save_file
+2023-01-21 14:36:35 Successfully saved to ../example/2022-03-30_论兴趣和世界第九大奇迹(一).md
+2023-01-21 14:36:35 The example result function save_file returned: None
+2023-01-21 14:36:35 Running function: get_webpage
+2023-01-21 14:36:35 Start scrape url: https://chuan.us/archives/796
+2023-01-21 14:36:36 The example result function get_webpage returned: <Response [200]>
+2023-01-21 14:36:36 Running function: get_article
+2023-01-21 14:36:36 The example result function get_article returned: {'title': '从长期国债的悖论到胆固醇的悖论(三)', 'content': '## 从长期国债的悖论到胆固醇的悖论(三)\n本文是\n\n<a href="https://chuan....5802 more characters not displayed...'}
+2023-01-21 14:36:36 Running function: save_file
+2023-01-21 14:36:36 Successfully saved to ../example/2022-03-24_从长期国债的悖论到胆固醇的悖论(三).md
+2023-01-21 14:36:36 The example result function save_file returned: None
+2023-01-21 14:36:36 Running function: get_webpage
+2023-01-21 14:36:36 Start scrape url: https://chuan.us/archives/791
+2023-01-21 14:36:36 The example result function get_webpage returned: <Response [200]>
+2023-01-21 14:36:36 Running function: get_article
+2023-01-21 14:36:36 The example result function get_article returned: {'title': '论做题家和出题家(一)', 'content': '## 论做题家和出题家(一)\n本文来自笔者最初在微博上的一些碎片化思考的整理和加工。\n\n1/\xa0&#8...4860 more characters not displayed...'}
+2023-01-21 14:36:36 Running function: save_file
+2023-01-21 14:36:36 Successfully saved to ../example/2022-02-14_论做题家和出题家(一).md
+2023-01-21 14:36:36 The example result function save_file returned: None
+2023-01-21 14:36:36 The example result function main returned: None

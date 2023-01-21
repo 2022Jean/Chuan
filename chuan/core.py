@@ -98,4 +98,5 @@ def main(dir_path: str) -> None:
 
 
 if __name__ == '__main__':
-    main()
+    path = '../example/'
+    main(path)
