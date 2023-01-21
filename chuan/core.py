@@ -92,7 +92,7 @@ def main():
         url: str = link_item['link']
         article_page: str = get_webpage(url).text
         article: dict = get_article(article_page)
-        file_name: str = "../example_files/" + link_item['date'] + '_' + article['title'] + '.md'
+        file_name: str = "../example/example_files" + link_item['date'] + '_' + article['title'] + '.md'
         save_file(file_name, article['content'])
 
 

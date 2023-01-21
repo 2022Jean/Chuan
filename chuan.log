@@ -1,0 +1,26 @@
+2023-01-21 12:26:47 Running function: main
+2023-01-21 12:26:47 Running function: get_webpage
+2023-01-21 12:26:47 Start scrape url: https://chuan.us
+2023-01-21 12:26:47 The example result function get_webpage returned: <Response [200]>
+2023-01-21 12:26:47 Running function: get_links
+2023-01-21 12:26:47 Last download articles is in 2023-01-21 which wrote in 2022-03-30
+2023-01-21 12:26:47 Function get_links return a list consisting of 3 items, for example: [{'link': 'https://chuan.us/archives/877', 'date': '2022-12-12'}, {'link': 'https://chuan.us/archives/868', 'date': '2022-09-14'}, {'link': 'https://chuan.us/archives/839', 'date': '2022-06-14'}]
+2023-01-21 12:26:47 Running function: get_webpage
+2023-01-21 12:26:47 Start scrape url: https://chuan.us/archives/877
+2023-01-21 12:26:48 The example result function get_webpage returned: <Response [200]>
+2023-01-21 12:26:48 Running function: get_article
+2023-01-21 12:26:48 The example result function get_article returned: {'title': '2022年岁末看美联储加息和通货膨胀', 'content': '## 2022年岁末看美联储加息和通货膨胀\n1/ 2022 年对大部分投资者是艰难的一年。美联储从三...3144 more characters not displayed...'}
+2023-01-21 12:26:48 Successfully saved to ../example_files/2022-12-12_2022年岁末看美联储加息和通货膨胀.md
+2023-01-21 12:26:48 Running function: get_webpage
+2023-01-21 12:26:48 Start scrape url: https://chuan.us/archives/868
+2023-01-21 12:26:48 The example result function get_webpage returned: <Response [200]>
+2023-01-21 12:26:48 Running function: get_article
+2023-01-21 12:26:48 The example result function get_article returned: {'title': '从权力和垄断的演化机制看投资(一)', 'content': '## 从权力和垄断的演化机制看投资(一)\n本文集合了笔者过去几个月在推特上关于权力和垄断演化的碎片化...4058 more characters not displayed...'}
+2023-01-21 12:26:48 Successfully saved to ../example_files/2022-09-14_从权力和垄断的演化机制看投资(一).md
+2023-01-21 12:26:48 Running function: get_webpage
+2023-01-21 12:26:48 Start scrape url: https://chuan.us/archives/839
+2023-01-21 12:26:49 The example result function get_webpage returned: <Response [200]>
+2023-01-21 12:26:49 Running function: get_article
+2023-01-21 12:26:49 The example result function get_article returned: {'title': '论熊市投资者的自我修养', 'content': '## 论熊市投资者的自我修养\n美国股市的标准普尔500指数，2022年六月十四号收盘在 3735点，...7606 more characters not displayed...'}
+2023-01-21 12:26:49 Successfully saved to ../example_files/2022-06-14_论熊市投资者的自我修养.md
+2023-01-21 12:26:49 Return NOTHING from function main, end the program!!
