@@ -1,4 +1,7 @@
-# virtual environment
 venv
+.idea
+__pycache__
+.git
 
-#
+example
+chuan.log
