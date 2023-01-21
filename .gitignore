@@ -94,3 +94,5 @@ chuan.log
 example_files
 example.py
 .idea
+*.xhtml
+*.xml
