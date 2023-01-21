@@ -37,6 +37,8 @@ def truncate_strings(items: (list, dict, str), max_length: int) -> (list, dict, 
 
 
 def log_it(func):
+    function_return_none: list[str] = ['save_file', 'main']
+
     @wraps(func)
     def wrapper(*args, **kwargs):
         logging.info("Running function: %s" % func.__name__)
@@ -45,7 +47,7 @@ def log_it(func):
 
         result = func(*args, **kwargs)
 
-        if func.__name__ != 'save_file' and result is None:
+        if func.__name__ not in function_return_none and result is None:
             logging.info(f'Return NOTHING from function {func.__name__}, end the program!!')
             exit()
 
